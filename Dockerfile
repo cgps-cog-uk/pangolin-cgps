@@ -6,9 +6,8 @@ RUN apt update && \
     apt install -y curl git
 
 # Create the environment
-COPY environment.yml /
+RUN curl https://raw.githubusercontent.com/aunderwo/lineages/master/environment.yml > /environment.yml
 RUN conda env create -f /environment.yml && conda clean -a
-RUN git clone https://github.com/aineniamh/lineages.git /lineage 
 
 # IQtree install - overwrites the default from conda
 RUN curl -L https://github.com/Cibiv/IQ-TREE/releases/download/v2.0-rc2/iqtree-2.0-rc2-Linux.tar.gz | tar -xz \
