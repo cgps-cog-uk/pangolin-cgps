@@ -15,8 +15,10 @@ RUN curl -L https://github.com/Cibiv/IQ-TREE/releases/download/v2.0-rc2/iqtree-2
     && rm -rf iqtree*
 
 COPY entrypoint.sh /
-
 RUN chmod +x /entrypoint.sh
+
+COPY csv2json.py /
+RUN chmod +x /csv2json.py
 
 #CMD "/bin/bash"
 ENTRYPOINT ["/entrypoint.sh"]
