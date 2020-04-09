@@ -11,8 +11,10 @@ RUN conda env create -f /environment.yml && conda clean -a
 
 # IQtree install - overwrites the default from conda
 RUN curl -L https://github.com/Cibiv/IQ-TREE/releases/download/v2.0-rc2/iqtree-2.0-rc2-Linux.tar.gz | tar -xz \
-    && mv iqtree-2.0-rc2-Linux/bin/iqtree /opt/conda/envs/lineage-env/bin/ \
+    && mv iqtree-2.0-rc2-Linux/bin/iqtree /opt/conda/envs/pangolin-env/bin/ \
     && rm -rf iqtree*
+
+RUN conda run -n pangolin-env pip install git+https://github.com/aineniamh/lineages.git
 
 COPY entrypoint.sh /
 
