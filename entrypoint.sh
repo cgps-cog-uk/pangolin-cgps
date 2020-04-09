@@ -1,7 +1,7 @@
 #!/bin/bash
 
-fasta="${1}"
+cat - > sequence.fna
 
-conda run -n lineage-env lineage /tmp/"${fasta}" > /dev/null 2> /dev/null
+conda run -n lineage-env lineage /tmp/sequence.fna > /dev/null 2> /dev/null
 
 cat analysis/lineage_report.csv
