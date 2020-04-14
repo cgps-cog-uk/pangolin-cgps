@@ -5,10 +5,9 @@ build:
   stage: build
   services:
     - docker:19.03.1-dind
-  variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:$TAG
   script:
     - TAG=$(echo $CI_COMMIT_REF_NAME | cut -d'.' -f 1)
+    - IMAGE_TAG=$CI_REGISTRY_IMAGE:$TAG
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
