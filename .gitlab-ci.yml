@@ -1,5 +1,7 @@
 build:
   image: docker:19.03.1
+  only:
+    - tags
   stage: build
   services:
     - docker:19.03.1-dind
