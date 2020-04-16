@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cat - > sequence.fna
 
 conda run -n pangolin pangolin sequence.fna > /dev/null 2> /dev/null
