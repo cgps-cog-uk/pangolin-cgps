@@ -6,15 +6,17 @@ RUN apt update && \
     apt install -y curl git
 
 # Create the environment
-RUN curl https://raw.githubusercontent.com/hCoV-2019/pangolin/master/environment.yml > /environment.yml
+RUN curl https://raw.githubusercontent.com/hCoV-2019/pangolin/report_maker/environment.yml > /environment.yml
 RUN conda env create -f /environment.yml && conda clean -a
 
 # Install pangolin
 RUN git clone  https://github.com/hCoV-2019/pangolin.git /pangolin
-RUN cd pangolin && conda run -n pangolin python setup.py install
+# Checkout branch
+RUN cd pangolin && git checkout report_maker
+RUN cd pangolin && conda run -n pangolin-web python setup.py install
 
-COPY csv2json.py /
-RUN chmod +x /csv2json.py
+COPY csv_reports_to_json.py /
+RUN chmod +x /csv_reports_to_json.py
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
