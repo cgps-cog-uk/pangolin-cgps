@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # e.g. ./build.sh v1.1.1 2020-04-27
 # or ./build.sh latest latest to live on the edge.
 
