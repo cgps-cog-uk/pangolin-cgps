@@ -1,24 +1,36 @@
+ARG CODE_VERSION=latest
+ARG DATA_VERSION=latest
+
+FROM registry.gitlab.com/cgps/cog-uk/lineages-code:${CODE_VERSION} AS code
+FROM registry.gitlab.com/cgps/cog-uk/lineages-data:${DATA_VERSION} AS data
+
 FROM continuumio/miniconda3
+
 LABEL authors="Corin Yeats and Anthony Underwood" \
       description="Docker image containing all requirements COVID-19 lineage assignment"
 
-RUN apt update && \
-    apt install -y curl git
-
-# Create the environment
-RUN curl https://raw.githubusercontent.com/hCoV-2019/pangolin/report_maker/environment.yml > /environment.yml
-RUN conda env create -f /environment.yml && conda clean -a
+RUN apt update \
+    && apt install -y curl \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install pangolin
-RUN git clone  https://github.com/hCoV-2019/pangolin.git /pangolin
-# Checkout branch
-RUN cd pangolin && git checkout report_maker
-RUN cd pangolin && conda run -n pangolin-web python setup.py install
+COPY --from=code /code/pangolin pangolin
+RUN cd pangolin \
+    && conda env create -f environment.yml \
+    && conda clean -a
 
-COPY csv_reports_to_json.py /
+RUN conda init bash \
+    && . /root/.bashrc \
+    && cd pangolin \
+    && conda activate pangolin \
+    && python setup.py install
+
+COPY --from=code /code/csv_reports_to_json.py /csv_reports_to_json.py
 RUN chmod +x /csv_reports_to_json.py
 
-COPY entrypoint.sh /
+COPY --from=code /code/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+
+COPY --from=data /data /data
 
 ENTRYPOINT ["/entrypoint.sh"]
