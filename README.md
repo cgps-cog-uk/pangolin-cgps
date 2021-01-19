@@ -17,3 +17,14 @@
   git push --tags
   ```
 
+### Build single stage
+
+#### Build Docker image
+```
+single_stage_build/build.sh v2.1.7
+```
+#### Test
+```
+cat test_files/good_sequence.fasta | docker run --rm -i registry.gitlab.com/cgps/cog-uk/lineages:v2.1.7
+{"taxon": "hCoV-19/Scotland/CVR07/2020|EPI_ISL_415630", "lineage": "B.40", "probability": "1.0", "pangoLEARN_version": "2021-01-16", "status": "passed_qc", "note": "", "Most common countries": "UK, USA, Australia", "Date range": "February-21, August-31", "Number of taxa": "1445", "Days since last sampling": "141"}
+```
