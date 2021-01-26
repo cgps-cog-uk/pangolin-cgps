@@ -15,4 +15,4 @@ docker build --rm --build-arg VERSION=${data_version} -t registry.gitlab.com/cgp
 
 echo "Combining code and data repositories"
 cd ..
-docker build --rm --build-arg CODE_VERSION=${code_version} --build-arg DATA_VERSION=${data_version} -t registry.gitlab.com/cgps/cog-uk/lineages:${lineages_version} .
+docker build --rm --build-arg CODE_VERSION=${code_version} --build-arg DATA_VERSION=${data_version} -t registry.gitlab.com/cgps/cog-uk/pangolin:${lineages_version} .
