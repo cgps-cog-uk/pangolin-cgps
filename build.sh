@@ -3,13 +3,13 @@
 
 code_version=${1}
 data_version=${2}
-combined_version=${1}_${2}
+combined_version=${3}
 
 echo "Building pangolin ${code_version}."
 cd code
 docker build --rm --build-arg VERSION=${code_version} -t registry.gitlab.com/cgps/cog-uk/pangolin-code:${code_version} .
 
-echo "Building pangoLEARN ${combined_version}."
+echo "Building pangoLEARN ${data_version}."
 cd ../data
 docker build --rm --build-arg VERSION=${data_version} -t registry.gitlab.com/cgps/cog-uk/pangolin-data:${data_version} .
 
