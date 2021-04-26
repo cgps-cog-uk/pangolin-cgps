@@ -1,8 +1,8 @@
 ARG CODE_VERSION=latest
 ARG DATA_VERSION=latest
 
-FROM registry.gitlab.com/cgps/cog-uk/pangolin-code:${CODE_VERSION} AS code
-FROM registry.gitlab.com/cgps/cog-uk/pangolin-data:${DATA_VERSION} AS data
+FROM registry.gitlab.com/cgps/cog-uk/lineages-code:${CODE_VERSION} AS code
+FROM registry.gitlab.com/cgps/cog-uk/lineages-data:${DATA_VERSION} AS data
 
 FROM continuumio/miniconda3
 
