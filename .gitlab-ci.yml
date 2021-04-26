@@ -12,9 +12,9 @@ build:
     - |
       if [[ $CODE_VERSION == $DATA_VERSION ]] # single stage build
       then
-        single_stage_build/build.sh $CI_COMMIT_REF_NAME
+        ./single_stage_build/build.sh $CI_COMMIT_REF_NAME
       else
-        build.sh $CODE_VERSION $DATA_VERSION
+        ./build.sh $CODE_VERSION $DATA_VERSION
       fi
     - IMAGE_TAG=$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
     - docker push $IMAGE_TAG
