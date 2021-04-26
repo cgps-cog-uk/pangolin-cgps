@@ -18,7 +18,8 @@ git push --tags
 ```
 
 ## Previous build was 2 stage
-The .gitlab-ci.yml for this can be found [here](https://gitlab.com/cgps/cog-uk/pangolin/-/blob/3cde9bc32a3995e523b2fb71b6d3c074efde4913/.gitlab-ci.yml)
+The original .gitlab-ci.yml for this 2 stage build can be found [here](https://gitlab.com/cgps/cog-uk/pangolin/-/blob/3cde9bc32a3995e523b2fb71b6d3c074efde4913/.gitlab-ci.yml)
+The `.gitlab-ci.yml` has been updated to work with either build process by looking at the tag format: either `<PANGOLIN VERSION>` or `<PANGOLIN VERSION>_<PANGOLEARN VERSION>`
 
 #### Command line build
 1. build container. For example
