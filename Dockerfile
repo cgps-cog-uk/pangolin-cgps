@@ -1,10 +1,13 @@
-ARG CODE_VERSION=latest
-ARG DATA_VERSION=latest
+ARG PANGOLIN_VERSION
+ARG PANGOLEARN_VERSION
 
-FROM registry.gitlab.com/cgps/cog-uk/lineages-code:${CODE_VERSION} AS code
-FROM registry.gitlab.com/cgps/cog-uk/lineages-data:${DATA_VERSION} AS data
+FROM registry.gitlab.com/cgps/cog-uk/lineages-code:$PANGOLIN_VERSION AS code
+FROM registry.gitlab.com/cgps/cog-uk/lineages-data:$PANGOLEARN_VERSION AS data
 
 FROM continuumio/miniconda3
+
+ARG PANGOLIN_VERSION
+ARG PANGOLEARN_VERSION
 
 LABEL authors="Corin Yeats and Anthony Underwood" \
       description="Docker image containing all requirements COVID-19 lineage assignment"
@@ -32,5 +35,8 @@ COPY --from=code /code/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 COPY --from=data /data /data
+
+RUN echo $PANGOLIN_VERSION > /.pangolin_version
+RUN echo $PANGOLEARN_VERSION > /.pangoLEARN_version
 
 ENTRYPOINT ["/entrypoint.sh"]
