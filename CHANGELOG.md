@@ -1,0 +1,16 @@
+The **convention** will be to use semantic versioning as follows
+* update major version when pangolin version has changed
+    e.g pangolin has changed from `v2.4` to `v2.4.1`
+    This repo tag changes from `v2.1.0` => `3.0.0`
+
+* update minor version when pangoLEARN version has changed
+    e.g pangoLEARN has changed from  `2021-04-21` to  `2021-04-28`
+    This repo tag changes from v`3.0.0` => `3.1.0`
+
+* update patch version when this repo code has changed 
+    e.g update code to produce new JSON output
+    This repo tag changes from `v3.1.0` => `3.1.1`
+
+| Version      | pangolin version | pangoLEARN version | Change                                                      |
+| ------------ | ---------------- | ------------------ | ----------------------------------------------------------- |
+| 3.0.0        | v.2.4.2          |  2021-04-28        | Update to new versioning system. N.B `v.2.4.2` is not a typo

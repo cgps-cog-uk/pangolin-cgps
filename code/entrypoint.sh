@@ -9,4 +9,4 @@ if [[ $NUM_SEQUENCES -gt 1 ]]; then echo "Only expected 1 sequence, not ${NUM_SE
 
 conda run -n pangolin pangolin --panGUIlin -d /data/ sequence.fna > /dev/null 2> /dev/null
 
-python3 csv_reports_to_json.py lineage_report.csv global_lineage_information.csv
+python3 csv_reports_to_json.py lineage_report.csv global_lineage_information.csv .pangolin_version .pangoLEARN_version

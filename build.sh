@@ -1,18 +1,20 @@
 # e.g. ./build.sh v1.1.1 2020-04-27
 # or ./build.sh latest latest to live on the edge.
+image_tag=${1}
 
-code_version=${1}
-data_version=${2}
-lineages_version=${1}_${2}
+# get ${pangolin_version} and ${pangoLEARN_version} from .env file
+set -o allexport
+source .env
+set +o allexport
 
-echo "Building pangolin ${code_version}."
+echo "Building pangolin ${PANGOLIN_VERSION}"
 cd code
-docker build --rm --build-arg VERSION=${code_version} -t registry.gitlab.com/cgps/cog-uk/lineages-code:${code_version} .
+docker build --rm --build-arg VERSION=${PANGOLIN_VERSION} -t registry.gitlab.com/cgps/cog-uk/lineages-code:${PANGOLIN_VERSION} .
 
-echo "Building pangoLEARN ${lineages_version}."
+echo "Building pangoLEARN ${PANGOLEARN_VERSION}"
 cd ../data
-docker build --rm --build-arg VERSION=${data_version} -t registry.gitlab.com/cgps/cog-uk/lineages-data:${data_version} .
+docker build --rm --build-arg VERSION=${PANGOLEARN_VERSION} -t registry.gitlab.com/cgps/cog-uk/lineages-data:${PANGOLEARN_VERSION} .
 
 echo "Combining code and data repositories"
 cd ..
-docker build --rm --build-arg CODE_VERSION=${code_version} --build-arg DATA_VERSION=${data_version} -t registry.gitlab.com/cgps/cog-uk/pangolin:${lineages_version} .
+docker build --rm --build-arg PANGOLIN_VERSION=${PANGOLIN_VERSION} --build-arg PANGOLEARN_VERSION=${PANGOLEARN_VERSION} -t registry.gitlab.com/cgps/cog-uk/pangolin:${image_tag} .
