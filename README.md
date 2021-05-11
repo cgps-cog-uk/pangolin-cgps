@@ -29,7 +29,7 @@ cat test_files/good_sequence.fasta | docker run --rm -i registry.gitlab.com/cgps
 ## Build container in registry
 Tag and push
 ```
-git tag v3.0.0
+git commit -am 'Updating to version v3.0.0'
 git push
 git push --tags
 ```
