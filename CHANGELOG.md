@@ -17,4 +17,4 @@ The **convention** will be to use semantic versioning as follows
 | v3.1.0       | v.2.4.2          | 2021-05-10         | Update to pangoLEARN 2021-05-10                              |
 | v4.0.0       | v3.0.1           | 2021-05-27         | Update to Pangolin v3.0.1, --panGUIlin removed               |
 | v5.0.0       | v3.0.5           | 2021-06-05         | Update to Pangolin v3.0.5 and PangoLEARN 2021-06-05          |
-| v6.0.0       | v3.1             | 2021-06-05         | Update to Pangolin v3.1                                      |
+| v6.0.0       | v3.1.1           | 2021-06-05         | Update to Pangolin v3.1.1                                    |
