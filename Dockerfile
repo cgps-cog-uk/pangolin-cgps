@@ -12,7 +12,7 @@ ARG PANGOLEARN_VERSION
 LABEL authors="Corin Yeats and Anthony Underwood" \
       description="Docker image containing all requirements COVID-19 lineage assignment"
 
-RUN apt update \
+RUN apt  --allow-releaseinfo-change update \
     && apt install -y curl \
     && rm -rf /var/lib/apt/lists/*
 
