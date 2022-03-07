@@ -31,3 +31,4 @@ The **convention** will be to use semantic versioning as follows
 | v12.1.0      | v3.1.17          | 2022-01-20         | Update to pangolin v3.1.17 and pangoLEARN 2022-01-20         |
 | v13.0.0      | v3.1.19          | 2022-01-20         | Update to pangolin v3.1.19                                   |
 | v14.0.0      | v3.1.20          | 2022-02-02         | Update to pangolin v3.1.20 and pangoLEARN 2022-02-02         |
+| v14.1.0      | v3.1.20          | 2022-02-28         | Update to pangoLEARN 2022-02-28                              |
