@@ -17,7 +17,7 @@ Update the [`CHANGELOG.md`](CHANGELOG.md) file with the changes according to the
 #### Build Docker image
 
 ```
-./build.sh v3.0.0
+bash build.sh v3.0.0
 ```
 
 #### Test
