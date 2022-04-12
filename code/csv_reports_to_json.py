@@ -23,6 +23,9 @@ if os.path.exists(lineage_report):
     lineage_info['pangolin_version'] = pangolin_version
     lineage_info['pangoLEARN_version'] = pangoLEARN_version
 
+    # Rename the QC fields to be compatible with the website.
+    lineage_info['status'] = 'passed_qc' if lineage_info['qc_status'] == 'pass' else lineage_info['qc_status']
+
     # convert to JSON
     print(json.dumps(lineage_info))
 else:
