@@ -5,6 +5,6 @@ ARG VERSION=master
 RUN apk add --no-cache git
 
 RUN mkdir /data \
-    && git clone --branch ${VERSION} --single-branch https://github.com/cov-lineages/pangoLEARN.git \
-    && mv ./pangoLEARN/pangoLEARN/data/* /data/
+    && git clone --depth 1 --branch ${VERSION} --single-branch https://github.com/cov-lineages/pangolin-data.git \
+    && mv ./pangolin-data/pangolin_data/data/* /data/
 

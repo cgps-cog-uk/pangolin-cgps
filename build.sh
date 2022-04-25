@@ -9,12 +9,12 @@ set +o allexport
 
 echo "Building pangolin ${PANGOLIN_VERSION}"
 cd code
-docker build --rm --build-arg VERSION=${PANGOLIN_VERSION} -t registry.gitlab.com/cgps/cog-uk/lineages-code:${PANGOLIN_VERSION} .
+docker build --rm --build-arg VERSION="${PANGOLIN_VERSION}" -t registry.gitlab.com/cgps/cog-uk/lineages-code:"${PANGOLIN_VERSION}" .
 
-echo "Building pangoLEARN ${PANGOLEARN_VERSION}"
+echo "Building pangoLEARN ${PANGOLIN_DATA_VERSION}"
 cd ../data
-docker build --rm --build-arg VERSION=${PANGOLEARN_VERSION} -t registry.gitlab.com/cgps/cog-uk/lineages-data:${PANGOLEARN_VERSION} .
+docker build --rm --build-arg VERSION="${PANGOLIN_DATA_VERSION}" -t registry.gitlab.com/cgps/cog-uk/lineages-models:"${PANGOLIN_DATA_VERSION}" .
 
 echo "Combining code and data repositories"
 cd ..
-docker build --rm --build-arg PANGOLIN_VERSION=${PANGOLIN_VERSION} --build-arg PANGOLEARN_VERSION=${PANGOLEARN_VERSION} -t registry.gitlab.com/cgps/cog-uk/pangolin:${IMAGE_TAG} .
+docker build --rm --build-arg PANGOLIN_VERSION="${PANGOLIN_VERSION}" --build-arg PANGOLIN_DATA_VERSION="${PANGOLIN_DATA_VERSION}" -t registry.gitlab.com/cgps/cog-uk/pangolin:"${IMAGE_TAG}" .

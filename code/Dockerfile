@@ -5,7 +5,7 @@ ARG VERSION=master
 RUN apk add --no-cache git
 
 RUN mkdir /code \
-    && git clone --branch ${VERSION} --single-branch https://github.com/cov-lineages/pangolin.git \
+    && git clone --depth 1 --branch ${VERSION} --single-branch https://github.com/cov-lineages/pangolin.git \
     && mv pangolin /code/
 
 COPY csv_reports_to_json.py /code/
