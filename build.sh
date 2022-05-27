@@ -11,7 +11,7 @@ echo "Building pangolin ${PANGOLIN_VERSION}"
 cd code
 docker build --rm --build-arg VERSION="${PANGOLIN_VERSION}" -t registry.gitlab.com/cgps/cog-uk/lineages-code:"${PANGOLIN_VERSION}" .
 
-echo "Building pangoLEARN ${PANGOLIN_DATA_VERSION}"
+echo "Building pangolin-data ${PANGOLIN_DATA_VERSION}"
 cd ../data
 docker build --rm --build-arg VERSION="${PANGOLIN_DATA_VERSION}" -t registry.gitlab.com/cgps/cog-uk/lineages-models:"${PANGOLIN_DATA_VERSION}" .
 

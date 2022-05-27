@@ -1,8 +1,10 @@
-FROM alpine:3.11.6
+FROM ubuntu:22.04
 
 ARG VERSION=master
 
-RUN apk add --no-cache git
+RUN apt update && \
+    apt install -y git && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /data \
     && git clone --depth 1 --branch ${VERSION} --single-branch https://github.com/cov-lineages/pangolin-data.git \
