@@ -35,4 +35,6 @@ The **convention** will be to use semantic versioning as follows
 | v15.0.1 | v4.0.5           | 2022-04-09         | Added field to output for backwards compatibility.                        |
 | v16.0.0 | v4.0.6           | v1.6               | Updated to pangolin v4.0.6 and pangolin-data v1.6. Changed output format. |
 | v16.1.0 | v4.0.6           | v1.8               | Updated to pangolin-data v1.8.                                            |  
-| v16.2.0 | v4.0.6           | v1.9               | Updated to pangolin-data v1.8.                                            |  
+| v16.2.0 | v4.0.6           | v1.9               | Updated to pangolin-data v1.9.                                            |  
+| v17.0.0 | v4.1.1           | v1.11              | Updated to pangolin v4.1.1 and pangolin-data v1.11.                       |
+| v17.0.1 | v4.1.1           | v1.11              | Fixed update to pangolin v4.1.1 and pangolin-data v1.11.                  |
