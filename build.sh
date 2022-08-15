@@ -1,5 +1,8 @@
+#!/usr/bin/env bash
+
 # e.g. ./build.sh v1.1.1 2020-04-27
 # or ./build.sh latest latest to live on the edge.
+
 IMAGE_TAG=${1}
 
 # get ${pangolin_version} and ${pangoLEARN_version} from .env file
