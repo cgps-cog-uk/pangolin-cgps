@@ -1,8 +1,8 @@
 ARG PANGOLIN_VERSION
 ARG PANGOLIN_DATA_VERSION
 
-FROM registry.gitlab.com/cgps/cog-uk/lineages-code:$PANGOLIN_VERSION AS code
-FROM registry.gitlab.com/cgps/cog-uk/lineages-models:$PANGOLIN_DATA_VERSION AS data
+FROM registry.gitlab.com/cgps/cog-uk/pangolin/code:$PANGOLIN_VERSION AS code
+FROM registry.gitlab.com/cgps/cog-uk/pangolin/models:$PANGOLIN_DATA_VERSION AS data
 
 FROM continuumio/miniconda3
 

@@ -41,3 +41,4 @@ The **convention** will be to use semantic versioning as follows
 | v17.1.0 | v4.1.1           | v1.12              | Updated to pangolin-data v1.12                                            |
 | v17.2.0 | v4.1.1           | v1.13              | Updated to pangolin-data v1.13                                            |
 | v17.3.0 | v4.1.1           | v1.14              | Updated to pangolin-data v1.14                                            |
+| v18.0.0 | v4.1.3           | v1.15.1            | Updated to pangolin v4.1.2 and pangolin-data v1.15.1                      |
