@@ -12,8 +12,8 @@ The **convention** will be to use semantic versioning as follows
 
 | Version | pangolin version | pangoLEARN version | Change                                                                    |
 |---------|------------------|--------------------|---------------------------------------------------------------------------|
-| v3.0.0  | v.2.4.2          | 2021-04-28         | Update to new versioning system. N.B `v.2.4.2` is not a typo              |
-| v3.1.0  | v.2.4.2          | 2021-05-10         | Update to pangoLEARN 2021-05-10                                           |
+| v3.0.0  | v2.4.2           | 2021-04-28         | Update to new versioning system. N.B `v.2.4.2` is not a typo              |
+| v3.1.0  | v2.4.2           | 2021-05-10         | Update to pangoLEARN 2021-05-10                                           |
 | v4.0.0  | v3.0.1           | 2021-05-27         | Update to Pangolin v3.0.1, --panGUIlin removed                            |
 | v5.0.0  | v3.0.5           | 2021-06-05         | Update to Pangolin v3.0.5 and PangoLEARN 2021-06-05                       |
 | v6.0.0  | v3.1.1           | 2021-06-05         | Update to Pangolin v3.1.1                                                 |
@@ -44,3 +44,4 @@ The **convention** will be to use semantic versioning as follows
 | v18.0.0 | v4.1.3           | v1.15.1            | Updated to pangolin v4.1.2 and pangolin-data v1.15.1                      |
 | v18.1.0 | v4.1.3           | v1.16              | Updated to pangolin-data v1.16                                            |
 | v18.2.0 | v4.1.3           | v1.17              | Updated to pangolin-data v1.17                                            |
+| v19.0.0 | v4.2             | v1.17              | Updated to pangolin v4.2                                                  |
