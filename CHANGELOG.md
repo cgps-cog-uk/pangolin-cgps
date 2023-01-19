@@ -1,13 +1,13 @@
 The **convention** will be to use semantic versioning as follows
 
-* update major version when pangolin version has changed e.g pangolin has changed from `v2.4` to `v2.4.1`
+* update major version when pangolin version has changed e.g. pangolin has changed from `v2.4` to `v2.4.1`
   This repo tag changes from `v2.1.0` => `v3.0.0`
 
-* update minor version when pangoLEARN version has changed e.g pangoLEARN has changed from  `2021-04-21`
+* update minor version when pangoLEARN version has changed e.g. pangoLEARN has changed from  `2021-04-21`
   to  `2021-04-28`
   This repo tag changes from `v3.0.0` => `v3.1.0`
 
-* update patch version when this repo code has changed e.g update code to produce new JSON output This repo tag changes
+* update patch version when this repo code has changed e.g. update code to produce new JSON output This repo tag changes
   from `v3.1.0` => `v3.1.1`
 
 | Version | pangolin version | pangoLEARN version | Change                                                                    |
@@ -45,3 +45,4 @@ The **convention** will be to use semantic versioning as follows
 | v18.1.0 | v4.1.3           | v1.16              | Updated to pangolin-data v1.16                                            |
 | v18.2.0 | v4.1.3           | v1.17              | Updated to pangolin-data v1.17                                            |
 | v19.0.0 | v4.2             | v1.17              | Updated to pangolin v4.2                                                  |
+| v19.1.0 | v4.2             | v1.18              | Updated to pangolin-data v1.18                                            |
