@@ -22,7 +22,7 @@ jobs:
         with:
           registry: registry.gitlab.com
           username: ${{ secrets.GITLAB_USERNAME }}
-          password: ${{ secrets.GITLAB_PASSWORD }}
+          password: ${{ secrets.GITLAB_ACCESS_TOKEN }}
 
       - name: Extract tags for Docker
         id: meta
