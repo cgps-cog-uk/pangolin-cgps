@@ -5,7 +5,6 @@ on:
     tags:
       - '*'
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -18,14 +17,34 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
 
-      # As from https://stackoverflow.com/questions/63308904/push-to-gitlab-with-access-token-using-github-actions
-      - name: Push to GitLab
-        env:
-          token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
-        run: |
-          echo Starting push of ${GITHUB_REF_NAME} to GitLab.
-          echo test, and deploy your project.
-          git config user.name "cgps.admin"
-          git config user.email "cgps.dev@gmail.com"
-          git remote set-url origin "https://oauth2:${token}@gitlab.com/cgps/cog-uk/pangolin.git"
-          git push origin --follow-tags ${GITHUB_REF_NAME}
+      - name: Log in to the registry
+        uses: docker/login-action@v2
+        with:
+          registry: registry.gitlab.com
+          username: ${{ secrets.GITLAB_USERNAME }}
+          password: ${{ secrets.GITLAB_PASSWORD }}
+
+      - name: Extract tags for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: registry.gitlab.com/cgps/cog-uk/pangolin
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+
+#      # As from https://stackoverflow.com/questions/63308904/push-to-gitlab-with-access-token-using-github-actions
+#      - name: Push to GitLab
+#        env:
+#          token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+#        run: |
+#          echo Starting push of ${GITHUB_REF_NAME} to GitLab.
+#          echo test, and deploy your project.
+#          git config user.name "cgps.admin"
+#          git config user.email "cgps.dev@gmail.com"
+#          git remote set-url origin "https://oauth2:${token}@gitlab.com/cgps/cog-uk/pangolin.git"
+#          git push origin --follow-tags ${GITHUB_REF_NAME}
