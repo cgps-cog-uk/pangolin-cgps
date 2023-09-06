@@ -1,25 +1,7 @@
-ARG PANGOLIN_VERSION
-ARG PANGOLIN_DATA_VERSION
-#
-#FROM registry.gitlab.com/cgps/cog-uk/pangolin/code:$PANGOLIN_VERSION AS code
-#FROM registry.gitlab.com/cgps/cog-uk/pangolin/models:$PANGOLIN_DATA_VERSION AS data
-
-#FROM continuumio/miniconda3:latest
-
 FROM python:3.9-slim
-
-ARG PANGOLIN_VERSION
-ARG PANGOLIN_DATA_VERSION
 
 LABEL authors="Corin Yeats and Anthony Underwood" \
       description="Docker image containing all requirements COVID-19 lineage assignment"
-
-#RUN apt  --allow-releaseinfo-change update \
-#    && apt install -y curl \
-#    && rm -rf /var/lib/apt/lists/*
-
-# Install pangolin
-#COPY --from=code /code/pangolin pangolin
 
 RUN apt update \
     && apt install -y git wget \
@@ -37,35 +19,25 @@ RUN mkdir -p ~/miniconda3 \
     && echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc \
     && echo "conda activate base" >> ~/.bashrc \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
+    && conda update -n base -c defaults conda \
     && conda clean -afy
 
-RUN git clone --depth 1 --branch ${PANGOLIN_VERSION} --single-branch https://github.com/cov-lineages/pangolin.git \
-    && cd pangolin \
-    && sed -i 's/python>=3.7/python>=3.9/' environment.yml \
-    && conda env create -f environment.yml \
+RUN conda create -n pangolin -y \
     && conda init bash \
     && . /root/.bashrc \
     && conda activate pangolin \
-    && pip install .
+    && conda config --add channels defaults \
+    && conda config --add channels bioconda \
+    && conda config --add channels conda-forge \
+    && conda config --set channel_priority strict \
+    && . /root/.bashrc \
+    && conda activate pangolin \
+    && conda install pangolin -y \
+    && conda update --all
 
-#RUN conda install -c bioconda -c conda-forge -c defaults pangolin
+RUN conda run -n pangolin pangolin -v | sed 's/pangolin //' > /.pangolin_version
 
-#RUN git clone --depth 1 --branch ${PANGOLIN_VERSION} --single-branch https://github.com/cov-lineages/pangolin.git \
-#    && cd pangolin \
-#    && conda env create -f environment.yml \
-#    && conda clean -a \
-#
-#RUN conda init bash \
-#    && . /root/.bashrc \
-#    && cd pangolin \
-#    && conda activate pangolin \
-#    && python setup.py install \
-#    && python pip_installs.py \
-#    && pip install git+https://github.com/cov-lineages/pangolin-data.git \
-#    && pip install git+https://github.com/cov-lineages/scorpio.git \
-#    && pip install git+https://github.com/cov-lineages/constellations.git
-
-#RUN pip cache purge
+RUN conda run -n pangolin pangolin -pv | sed 's/pangolin-data //' > /.pangolin_data_version
 
 COPY csv_reports_to_json.py /csv_reports_to_json.py
 
