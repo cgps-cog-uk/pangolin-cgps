@@ -35,6 +35,9 @@ RUN conda create -n pangolin -y \
     && conda install pangolin -y \
     && conda update --all
 
+RUN conda run -n pangolin pangolin --add-assignment-cache && \
+    conda run -n pangolin pangolin --update-data
+
 RUN conda run -n pangolin pangolin -v | sed 's/pangolin //' > /.pangolin_version
 
 RUN conda run -n pangolin pangolin -pv | sed 's/pangolin-data //' > /.pangolin_data_version

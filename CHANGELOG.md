@@ -52,3 +52,4 @@ The **convention** will be to use semantic versioning as follows
 | v20.1.0 | v4.3             | v1.20              | Updated to pangolin-data v1.20                                            |
 | v20.2.0 | v4.3             | v1.21              | Updated to pangolin-data v1.21                                            |
 | v20.3.0 | v4.3             | v1.22              | Updated to pangolin-data v1.22                                            |
+| v20.4.0 | v4.3             | v1.23              | Updated to pangolin-data v1.23                                            |
